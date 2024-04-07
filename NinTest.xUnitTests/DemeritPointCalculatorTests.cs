@@ -25,14 +25,14 @@ namespace NinTest.xUnitTests
         [InlineData(66, 0)]
         [InlineData(70, 1)]
         [InlineData(75, 2)]
-        public void DemeritPointCalculator_SpeedIsLessOrEqualSpeedLimit_ReturnZero(int speed, int demeritPoint)
+        public void DemeritPointCalculator_SpeedIsLessOrEqualSpeedLimit_ReturnZero(int speed, int expectedResult)
         {
             //Arrange
             var demeritCal = new DemeritPointCalculator();
             //Act
             var result = demeritCal.CalculateDemeritPoint(speed);
             //Assert
-            Assert.Equal(demeritPoint, result);
+            Assert.Equal(expectedResult, result);
         }
     }
 }

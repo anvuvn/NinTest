@@ -31,14 +31,14 @@ namespace NinTest.NUnitTests
         [TestCase(66, 0)]
         [TestCase(70, 1)]
         [TestCase(75, 2)] 
-        public void DemeritPointCalculator_SpeedIsLessOrEqualSpeedLimit_ReturnZero(int speed, int demeritPoint)
+        public void DemeritPointCalculator_SpeedIsLessOrEqualSpeedLimit_ReturnZero(int speed, int expectedResult)
         {
             //Arrange
             var demeritCal = new DemeritPointCalculator();
             //Act
             var result = demeritCal.CalculateDemeritPoint(speed);
             //Assert
-            Assert.That(result, Is.EqualTo(demeritPoint));
+            Assert.That(result, Is.EqualTo(expectedResult));
         }
     }
 }                                             
