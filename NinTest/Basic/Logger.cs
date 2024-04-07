@@ -12,7 +12,7 @@ namespace NinTest.Basic
 
         public event EventHandler<Guid> ErrorLogged;
 
-        public void Log(string message)
+        public void Log(string message)                                                                               
         {
             if(string.IsNullOrWhiteSpace(message)) {
                 throw new ArgumentNullException();

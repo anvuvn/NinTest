@@ -1,11 +1,11 @@
 using NinTest.Basic;
 
-namespace NinTest.NUnitTests
+namespace NinTest.xUnitTests
 {
-    [TestFixture]
+     
     public class LoggerTests
     {
-        [Test]
+        [Fact]
         public void Log_WhenCalled_SetTheLastErrorProperty()
         {
             // Arrage
@@ -15,23 +15,23 @@ namespace NinTest.NUnitTests
             logger.Log("Message");
 
             // Assert
-            Assert.That(logger.LastError, Is.EqualTo("Message"));
+            Assert.Equal("Message", logger.LastError);
         }
 
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
-        [TestCase(" ")]
-        public void Log_InvalidError_ThrowArgumentNullException(string? message)
-        {                    
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void Log_InvalidError_ThrowArgumentNullException(string message)
+        {
             // Arrage
             var logger = new Logger();
 
             //Act - Assert                                                       
-            Assert.That(() => logger.Log(message), Throws.ArgumentNullException);  
+            Assert.Throws<ArgumentNullException>(() => logger.Log(message));
         }
 
-        [Test]
+        [Fact]
         public void Log_ValidError_RaiseErrorLoggedEvent()
         {
             var logger = new Logger();
@@ -42,7 +42,7 @@ namespace NinTest.NUnitTests
             };
             logger.Log("message");
             //
-            Assert.That(id, Is.Not.EqualTo(Guid.Empty));
+            Assert.NotEqual(id, Guid.Empty);
 
         }
     }
